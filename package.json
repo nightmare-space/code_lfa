@@ -1,13 +1,17 @@
 {
   "scripts": {
     "Android: Run Release": "nic release -r",
-    "Android: Build Apk(Split Api)": "ni release -s",
-    "Android: Build AAB": "ni release -a",
-    "Mac: Install From Local Code": "ni release -m",
-    "Mac: Build Mac App": "ni release --build-mac",
-    "Mac: Generate Mac App(tar)": "ni release --gen-mac-app",
-    "Mac: Generate Mac App(dmg)": "ni release --build-mac-dmg",
-    "Default: Upload Build Package": "ni default -u",
-    "Default: Clean Build Cache": "ni release --clean-build"
+    "Android: Build Apk(Split Api)": "nic release -s",
+    "Android: Build AAB": "nic release -a",
+    "Mac: Install From Local Code": "nic release -m",
+    "Mac: Build Mac App": "nic release --build-mac",
+    "Mac: Generate Mac App(tar)": "nic release --gen-mac-app",
+    "Mac: Generate Mac App(dmg)": "nic release --build-mac-dmg",
+    "Default: Upload Build Package": "nic default -u",
+    "Default: Prepare Package": "nic default rename",
+    "Default: Clean Build Cache": "nic release --clean-build",
+    "Gen Intl Code": "dart run intl_utils:generate",
+    "Gen Model": "dart run build_runner build --delete-conflicting-outputs",
+    "Start Services": "adb shell sh /storage/emulated/0/Android/data/com.nightmare.sula/files/start.sh"
   }
 }
