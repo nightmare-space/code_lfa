@@ -1,3 +1,6 @@
+const bool product = bool.fromEnvironment('dart.vm.product');
+const String debugCSV = '4.103.1';
+
 class Config {
   Config._();
 
@@ -5,10 +8,10 @@ class Config {
   static const String packageName = 'com.nightmare.code';
 
   static const String versionName = String.fromEnvironment('VERSION');
+  static const String defaultCodeServerVersion = product ? String.fromEnvironment('CSVERSION') : debugCSV;
+  static String codeServerVersion = defaultCodeServerVersion;
 
   static int port = 20000;
 
-  static const String defaultCodeServerVersion = String.fromEnvironment('CSVERSION');
-
-  static String ubuntu = 'ubuntu-jammy-aarch64-pd-v4.7.0.tar.xz';
+  static String ubuntuFileName = 'ubuntu-noble-aarch64-pd-v4.18.0.tar.xz';
 }
