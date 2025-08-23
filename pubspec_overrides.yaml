@@ -1,7 +1,10 @@
 dependency_overrides:
-  behavior_api:
-    path: /Users/nightmare/Desktop/nightmare-core/behavior_api
-  permission_handler: 11.3.1
+  permission_handler: ^11.3.1
   device_info_plus: ^10.1.2
+  behavior_api:
+    path: ../../nightmare-space/behavior_api
   global_repository:
-    path: /Users/nightmare/Desktop/nightmare-space/global_repository
+    path: ../../nightmare-space/global_repository
+  intl: 0.20.2
+  xterm:
+    path: /Users/lori/Desktop/Nightmare/github_repo/xterm.dart
