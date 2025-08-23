@@ -88,6 +88,8 @@ Future<String> getLibPath() async {
 
 Pty createPTY({
   String? shell,
+  int rows = 25,
+  int columns = 80,
 }) {
   Map<String, String> envir = Map.from(Platform.environment);
   envir['HOME'] = RuntimeEnvir.homePath;
@@ -100,10 +102,12 @@ Pty createPTY({
   envir['LD_LIBRARY_PATH'] = RuntimeEnvir.binPath;
 
   return Pty.start(
-    '/system/bin/sh',
+    '${RuntimeEnvir.binPath}/${shell ?? 'bash'}',
     arguments: [],
     environment: envir,
     workingDirectory: RuntimeEnvir.homePath,
+    rows: rows,
+    columns: columns,
   );
 }
 
