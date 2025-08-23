@@ -40,11 +40,26 @@ Cheers! 🍻
 
 3.启动 Code FA，Engoy it!
 
-## 已知问题
+## 注意
 
-- 内置 WebView 对剪切板的适配不友好：可通过外部浏览器打开 127.0.0.1:20000 来绕过这个问题
+Code Server 是在一个 Ubuntu 中运行的，并非 termux 环境，所以，你需要装任何的依赖，只需要查询 Ubuntu 安装依赖的方式即可
 
-TODO: 像sula一样，侧边滑动直接输入粘贴文本
+## 安装内部依赖
+
+这一节本不该出现在这，因为它本就不是 Code FA 的问题，但是极多的人不会使用 Ubuntu 安装简单的依赖，所有的相关问题都抛给 Code FA
+
+同步包
+
+```bash
+apt update
+```
+
+安装任何依赖
+```bash
+apt install python3
+apt install clang
+...
+```
 
 ## Git History
 
