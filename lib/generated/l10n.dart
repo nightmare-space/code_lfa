@@ -154,9 +154,24 @@ class S {
     return Intl.message('Installing', name: 'installing', desc: '', args: []);
   }
 
-  /// `Uninstalled`
+  /// `Not Installed`
   String get uninstalled {
-    return Intl.message('Uninstalled', name: 'uninstalled', desc: '', args: []);
+    return Intl.message(
+      'Not Installed',
+      name: 'uninstalled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Generate Fix Hardlink Script`
+  String get gen_script {
+    return Intl.message(
+      'Generate Fix Hardlink Script',
+      name: 'gen_script',
+      desc: '',
+      args: [],
+    );
   }
 }
 

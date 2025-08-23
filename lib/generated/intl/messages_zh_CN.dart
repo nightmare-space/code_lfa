@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "当前VS Code Server版本",
     ),
     "define_functions": MessageLookupByLibrary.simpleMessage("定义需要使用的函数"),
+    "gen_script": MessageLookupByLibrary.simpleMessage("生成硬链接修复脚本"),
     "installed": MessageLookupByLibrary.simpleMessage("已安装"),
     "installing": MessageLookupByLibrary.simpleMessage("安装中"),
     "listen_vscode_start": MessageLookupByLibrary.simpleMessage(

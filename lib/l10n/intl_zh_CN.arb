@@ -11,5 +11,6 @@
   "listen_vscode_start": "监听VS Code启动状态以跳转Web View",
   "installed": "已安装",
   "installing": "安装中",
-  "uninstalled": "未安装"
+  "uninstalled": "未安装",
+  "gen_script": "生成硬链接修复脚本"
 }
