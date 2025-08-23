@@ -43,6 +43,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "define_functions": MessageLookupByLibrary.simpleMessage(
       "Define functions to be used",
     ),
+    "gen_script": MessageLookupByLibrary.simpleMessage(
+      "Generate Fix Hardlink Script",
+    ),
     "installed": MessageLookupByLibrary.simpleMessage("Installed"),
     "installing": MessageLookupByLibrary.simpleMessage("Installing"),
     "listen_vscode_start": MessageLookupByLibrary.simpleMessage(
@@ -51,6 +54,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "ubuntu_not_installed": MessageLookupByLibrary.simpleMessage(
       "Ubuntu not installed, installing",
     ),
-    "uninstalled": MessageLookupByLibrary.simpleMessage("Uninstalled"),
+    "uninstalled": MessageLookupByLibrary.simpleMessage("Not Installed"),
   };
 }

@@ -11,5 +11,6 @@
   "listen_vscode_start": "Listen for VS Code start status to jump to Web View",
   "installed": "Installed",
   "installing": "Installing",
-  "uninstalled": "Not Installed"
+  "uninstalled": "Not Installed",
+  "gen_script": "Generate Fix Hardlink Script"
 }
