@@ -1,4 +1,13 @@
 {
-    // "editor.formatOnSave": true,
-    "dart.lineLength": 200
+    "editor.formatOnSave": true,
+    "dart.lineLength": 200,
+    "files.associations": {
+        "*.arb": "json"
+    },
+    "[json]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
 }

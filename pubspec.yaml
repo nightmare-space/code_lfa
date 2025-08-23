@@ -1,22 +1,29 @@
 name: code_lfa
 description: VS Code for Android
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-version: 1.5.0+20
-code_server: 4.96.2
+version: 1.6.0+21
+code_server: 4.103.1
 environment:
   sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  # pub repo
   signale: ^0.0.9
   intl: ^0.19.0
-  url_launcher: ^6.1.10
-  archive: ^4.0.2
+  archive: ^4.0.7
+  async: ^2.11.0
   dio: ^5.7.0
   cupertino_icons: ^1.0.2
   get: ^4.6.5
-  flutter_markdown: ^0.6.10+2
+  device_info_plus: ^11.1.1
+  tar: ^2.0.0
+  path: ^1.9.1
+
+  # get repo
   xterm:
     git:
       url: https://github.com/TerminalStudio/xterm.dart
@@ -27,26 +34,21 @@ dependencies:
     git: https://github.com/TerminalStudio/flutter_pty
   global_repository:
     git: https://github.com/nightmare-space/global_repository
-  path: ^1.8.0
-  device_info_plus: ^11.1.1
-  meta: ^1.11.0
-  typed_data: ^1.3.2
-  async: ^2.11.0
   behavior_api:
     git:
       url: https://github.com/nightmare-space/empty_package
       path: behavior_api
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  intl_utils: ^2.8.7
 
 flutter:
   uses-material-design: true
   assets:
     - assets/
-#  global_repository:
-#    path: ./global_repository
-#
-#  settings:
-#    path: ./settings
+
+flutter_intl:
+  enabled: true
