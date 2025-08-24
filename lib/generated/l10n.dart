@@ -104,13 +104,13 @@ class S {
     );
   }
 
-  /// `Copy code-server to data directory`
-  String get copy_code_server {
+  /// `Copy code-server{param} to data directory`
+  String copy_code_server(Object param) {
     return Intl.message(
-      'Copy code-server to data directory',
+      'Copy code-server$param to data directory',
       name: 'copy_code_server',
       desc: '',
-      args: [],
+      args: [param],
     );
   }
 

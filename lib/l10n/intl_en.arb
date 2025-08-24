@@ -5,7 +5,7 @@
   "copy_proot_distro": "Copy proot-distro to data directory",
   "copy_ubuntu": "Copy ubuntu to data directory",
   "create_busybox_symlink": "Create Busybox symlink",
-  "copy_code_server": "Copy code-server to data directory",
+  "copy_code_server": "Copy code-server{param} to data directory",
   "define_functions": "Define functions to be used",
   "ubuntu_not_installed": "Ubuntu not installed, installing",
   "listen_vscode_start": "Listen for VS Code start status to jump to Web View",
