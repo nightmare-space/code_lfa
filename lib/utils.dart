@@ -146,15 +146,6 @@ extension PTYExt on Pty {
     //terminal?.buffer.eraseLine();
     // await Future.delayed(const Duration(milliseconds: 100));
     // writeString('printf "\\033[?1049l"\n');
-
-    // bool fileExists = await shellFile.exists();
-    // while (fileExists) {
-    //   Log.v('File exists.');
-    //   await Future.delayed(const Duration(milliseconds: 100)); // 每秒检查一次
-    //   fileExists = await shellFile.exists();
-    // }
-
-    // 用 file watch 代替上面功能
     await defineFunctionLock.future;
     Log.i('define function -> done');
   }

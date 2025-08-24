@@ -16,12 +16,10 @@ class HomeController extends GetxController {
   bool vsCodeStaring = false;
   SettingNode privacySetting = 'privacy'.setting;
   Pty? pseudoTerminal;
-  Size terminalSize = Size.zero;
   late Terminal terminal = Terminal(
     maxLines: 10000,
     onResize: (width, height, pixelWidth, pixelHeight) {
       pseudoTerminal?.resize(height, width);
-      terminalSize = Size(width.toDouble(), height.toDouble());
     },
     onOutput: (data) {
       pseudoTerminal?.writeString(data);
@@ -29,7 +27,6 @@ class HomeController extends GetxController {
   );
   bool webviewHasOpen = false;
 
-  String lastLine = '';
   File progressFile = File('${RuntimeEnvir.tmpPath}/progress');
   File progressDesFile = File('${RuntimeEnvir.tmpPath}/progress_des');
   double progress = 0.0;
@@ -63,7 +60,6 @@ class HomeController extends GetxController {
     final Completer completer = Completer();
     Utf8Decoder decoder = const Utf8Decoder(allowMalformed: true);
     pseudoTerminal!.output.cast<List<int>>().transform(decoder).listen((event) async {
-      lastLine = event.trim().split(RegExp('\x0d|\x0a')).last;
       if (event.contains('http://0.0.0.0:${Config.port}')) {
         Log.e(event);
         if (!completer.isCompleted) {
@@ -198,6 +194,8 @@ class HomeController extends GetxController {
     }
   }
 
+  bool get useCustomCodeServer => Config.codeServerVersion != Config.defaultCodeServerVersion;
+
   void setProgress(String description) {
     currentProgress = description;
     terminal.writeProgress(currentProgress);
@@ -216,15 +214,10 @@ class HomeController extends GetxController {
     bumpProgress();
     // -
     setProgress('${S.current.create_terminal_obj}...');
-    pseudoTerminal = createPTY(
-      rows: terminalSize.height.toInt() == 0 ? 24 : terminalSize.height.toInt(),
-      columns: terminalSize.width.toInt() == 0 ? 80 : terminalSize.width.toInt(),
-    );
-    update();
-    pseudoTerminal?.resize(terminal.viewWidth, terminal.viewHeight);
+    pseudoTerminal = createPTY(rows: terminal.viewHeight, columns: terminal.viewWidth);
     bumpProgress();
     // -
-    terminal.writeProgress('${S.current.current_code_version}:${Config.codeServerVersion}...');
+    terminal.writeProgress('${S.current.current_code_version}:${Config.codeServerVersion} [${useCustomCodeServer ? 'custom' : ''}]');
     setProgress('${S.current.copy_proot_distro}...');
     await AssetsUtils.copyAssetToPath('assets/proot-distro.zip', '${RuntimeEnvir.homePath}/proot-distro.zip');
     bumpProgress();
@@ -237,18 +230,41 @@ class HomeController extends GetxController {
     createBusyboxLink();
     bumpProgress();
     // -
-    final tgxPath = '${RuntimeEnvir.tmpPath}/code-server-${Config.codeServerVersion}-linux-arm64.tar.gz';
-    setProgress('${S.current.gen_script}...');
-    Map<String, String> hardLinks = await getHardLinkMap(tgxPath);
-    String fixHardLinkShell = genFixCodeServerHardLinkShell(hardLinks);
-    Log.i('fixHardLinkShell -> $fixHardLinkShell');
-    bumpProgress();
+    String codeServerName = 'code-server-${Config.codeServerVersion}-linux-arm64.tar.gz';
+    String sourcePath = useCustomCodeServer ? '/sdcard/$codeServerName' : 'assets/$codeServerName';
+    setProgress('${S.current.copy_code_server('[$sourcePath]')} ${RuntimeEnvir.tmpPath}...');
+    try {
+      if (useCustomCodeServer) {
+        File codeServerOnSdcard = File(sourcePath);
+        File targetFile = File('${RuntimeEnvir.tmpPath}/$codeServerName');
+        if (targetFile.lengthSync() == codeServerOnSdcard.lengthSync()) {
+          Log.i('code server already copied, skip');
+        }
+        await codeServerOnSdcard.copy(targetFile.path);
+      } else {
+        await AssetsUtils.copyAssetToPath(
+          sourcePath,
+          '${RuntimeEnvir.tmpPath}/$codeServerName',
+        );
+      }
+    } catch (e) {
+      Log.e('Copy code server failed -> $e');
+      terminal.write('Copy code server failed -> $e');
+      return;
+    }
     // -
-    setProgress('${S.current.copy_code_server} ${RuntimeEnvir.tmpPath}...');
-    await AssetsUtils.copyAssetToPath(
-      'assets/code-server-${Config.codeServerVersion}-linux-arm64.tar.gz',
-      '${RuntimeEnvir.tmpPath}/code-server-${Config.codeServerVersion}-linux-arm64.tar.gz',
-    );
+    final codeServerPath = '${RuntimeEnvir.tmpPath}/$codeServerName';
+    setProgress('${S.current.gen_script}...');
+    String fixHardLinkShell = '';
+    try {
+      Map<String, String> hardLinks = await getHardLinkMap(codeServerPath);
+      fixHardLinkShell = genFixCodeServerHardLinkShell(hardLinks);
+      Log.i('fixHardLinkShell -> $fixHardLinkShell');
+    } catch (e) {
+      terminal.write('Get hard link failed, will cause code-server start failed -> $e\r\n');
+      return;
+    }
+    bumpProgress();
     bumpProgress();
     // -
     vsCodeStartWhenSuccessBind();
