@@ -28,7 +28,7 @@ Future<void> main() async {
   RuntimeEnvir.initEnvirWithPackageName('com.nightmare.code');
   await initSettingStore(RuntimeEnvir.configPath);
   runApp(const CodeLFA());
-  initApi('Code FA', Config.versionName);
+  initApi('Code LFA', Config.versionName);
 }
 
 class CodeLFA extends StatelessWidget {
@@ -43,7 +43,7 @@ class CodeLFA extends StatelessWidget {
         colorSchemeSeed: Colors.primaries[3],
       ),
       // locale: const Locale('zh', 'CN'),
-      locale: const Locale('en'),
+      // locale: const Locale('en'),
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
