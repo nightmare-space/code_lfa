@@ -2,6 +2,13 @@
 
 Language: English | [中文简体](README-ZH.md)
 
+![release](https://img.shields.io/github/v/release/nightmare-space/code_lfa) 
+[![Last Commits](https://img.shields.io/github/last-commit/nightmare-space/code_lfa?logo=git&logoColor=white)](https://github.com/nightmare-space/code_lfa/commits/master)
+[![Pull Requests](https://img.shields.io/github/issues-pr/nightmare-space/code_lfa?logo=github&logoColor=white)](https://github.com/nightmare-space/code_lfa/pulls)
+[![Code size](https://img.shields.io/github/languages/code-size/nightmare-space/code_lfa?logo=github&logoColor=white)](https://github.com/nightmare-space/code_lfa)
+[![License](https://img.shields.io/github/license/nightmare-space/code_lfa?logo=open-source-initiative&logoColor=green)](https://github.com/nightmare-space/code_lfa/blob/master/LICENSE)
+ ![Platform](https://img.shields.io/badge/support%20platform-android%20-purple) ![download time](https://img.shields.io/github/downloads/nightmare-space/code_lfa/total) ![open issues](https://img.shields.io/github/issues/nightmare-space/code_lfa) ![fork](https://img.shields.io/github/forks/nightmare-space/code_lfa?style=social) ![code line](https://img.shields.io/tokei/lines/github/nightmare-space/code_lfa) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f969750dc4aa424ead664219ddcf321d)](https://app.codacy.com/gh/nightmare-space/code_lfa?utm_source=github.com&utm_medium=referral&utm_content=nightmare-space/code_lfa&utm_campaign=Badge_Grade)
+
 This is an Android version of VS Code implemented using code-server. Some have already implemented similar solutions, and this is one of them.
 
 The package size is relatively large since the resources required are necessary for the initial run, so integrating them into the server and dynamically downloading them is not very meaningful.
