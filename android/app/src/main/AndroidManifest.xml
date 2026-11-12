@@ -37,8 +37,10 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- was: EnableImpeller=false - with Flutter 3.47 the Skia fallback draws nothing on newer devices (gray screen) -->
+        <!-- <meta-data android:name="io.flutter.embedding.android.EnableImpeller" android:value="false" /> -->
         <meta-data
             android:name="io.flutter.embedding.android.EnableImpeller"
-            android:value="false" />
+            android:value="true" />
     </application>
 </manifest>
