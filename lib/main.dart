@@ -52,6 +52,13 @@ class CodeLFA extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       home: TerminalPage(),
+      // global_repository pages (PrivacyAgreePage on first start) size themselves with context.w,
+      // which needs a ViewMetric above them - without it: null check -> red screen (debug) / gray (release).
+      // uiWidth == screenWidth keeps scale 1.0, the same 1:1 sizing as lib/screen_ext.dart.
+      builder: (context, child) {
+        final width = MediaQuery.sizeOf(context).width;
+        return ViewMetric(uiWidth: width, screenWidth: width, child: child!);
+      },
     );
   }
 }

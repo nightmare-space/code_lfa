@@ -1,4 +1,5 @@
 import 'package:code_lfa/utils.dart';
+import 'package:code_lfa/screen_ext.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -85,7 +86,7 @@ class _TerminalPageState extends State<TerminalPage> {
                                       Container(
                                         height: 5.w,
                                         decoration: BoxDecoration(
-                                          color: Theme.of(context).colorScheme.primary.opacity02,
+                                          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
                                           borderRadius: BorderRadius.circular(3.w),
                                         ),
                                       ),
